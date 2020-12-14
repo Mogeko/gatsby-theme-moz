@@ -29,6 +29,15 @@ const HeaderBar = styled.header`
     min-width: 0px;
     max-width: 1192px;
     overflow: hidden;
+    .homepage & {
+      flex-direction: column;
+      margin: 0px 20px;
+    }
+  }
+  .homepage & {
+    border-bottom: 1px solid #0000001a;
+    margin: 0 0 32px;
+    box-shadow: unset;
   }
 `
 
@@ -40,6 +49,11 @@ const Title = styled.h1`
   font-size: 2.25em;
   a:hover {
     color: black;
+  }
+  .homepage & {
+    font-size: 13em;
+    line-height: 1em;
+    margin: 0.5em auto;
   }
 `
 
@@ -63,6 +77,12 @@ const Menu = styled.nav`
     text-transform: uppercase;
     font-size: 0.88em;
     color: #757575;
+  }
+  .homepage & {
+    flex: 0 1 auto;
+    margin: 25px auto;
+    font-size: 1.25em;
+    width: 100%;
   }
 `
 
