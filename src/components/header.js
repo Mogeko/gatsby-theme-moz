@@ -1,42 +1,80 @@
+import { styled } from "linaria/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+export default function Header({ siteTitle, children }) {
+  return (
+    <HeaderBar>
+      <div>
+        <Title>
+          <Link to="/">{siteTitle}</Link>
+        </Title>
+        <Menu>{children}</Menu>
+      </div>
+    </HeaderBar>
+  )
+}
+
+const HeaderBar = styled.header`
+  display: flex;
+  justify-content: center;
+  box-shadow: #0000000d 0px 4px 12px 0px;
+  div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px 64px;
+    min-height: 54px;
+    min-width: 0px;
+    max-width: 1192px;
+    overflow: hidden;
+  }
+`
+
+const Title = styled.h1`
+  display: block;
+  flex: 0 0 auto;
+  margin: 0 40px 0 0;
+  font-family: "Libre Barcode 128 Text", cursive;
+  font-size: 2.25em;
+  a:hover {
+    color: black;
+  }
+`
+
+const Menu = styled.nav`
+  display: flex;
+  flex: 1 1 auto;
+  overflow: auto;
+  a {
+    &:first-child {
+      margin: 0 15px 0 0;
+    }
+    &:last-child {
+      margin: 0 0 0 15px;
+    }
+    &:hover {
+      fill: #191919;
+      color: #191919;
+    }
+    flex-grow: 0;
+    margin: 0 15px 0;
+    text-transform: uppercase;
+    font-size: 0.88em;
+    color: #757575;
+  }
+`
+
+export const HeaderGap = styled.span`
+  flex-grow: 1;
+`
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
 
 Header.defaultProps = {
   siteTitle: ``,
 }
-
-export default Header
