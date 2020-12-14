@@ -67,3 +67,9 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# linaria files
+.linaria-cache/*
+
+# vscode files
+.vscode/*
