@@ -2,18 +2,19 @@ import { styled } from "linaria/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { Container } from "./layout"
 
 export { default as TopProgress } from "./top-progress"
 
 export default function Header({ siteTitle, children }) {
   return (
     <HeaderBar>
-      <div>
+      <Container>
         <Title>
           <Link to="/">{siteTitle}</Link>
         </Title>
         <Menu>{children}</Menu>
-      </div>
+      </Container>
     </HeaderBar>
   )
 }
@@ -22,18 +23,13 @@ const HeaderBar = styled.header`
   display: flex;
   justify-content: center;
   box-shadow: #0000000d 0px 4px 12px 0px;
-  div {
+  ${Container} {
     display: flex;
     align-items: center;
-    width: 100%;
-    margin: 0px 64px;
     min-height: 54px;
-    min-width: 0px;
-    max-width: 1192px;
     overflow: hidden;
     .homepage & {
       flex-direction: column;
-      margin: 0px 20px;
     }
   }
   .homepage & {

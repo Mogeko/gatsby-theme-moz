@@ -12,6 +12,15 @@ import { styled } from "linaria/react"
 import CssBaseline from "../styles/base"
 import Header, { HeaderGap } from "./header"
 import Footer from "./footer"
+import {
+  screenSmMin,
+  screenMdMin,
+  screenLgMin,
+  containerXsMax,
+  containerSmMax,
+  containerMdMax,
+  containerLgMax,
+} from "../styles/variables"
 
 export { TopProgress } from "./header"
 
@@ -41,6 +50,19 @@ export default function Layout({ children, className }) {
     </Wrap>
   )
 }
+
+export const Container = styled.div`
+  max-width: ${containerSmMax};
+  @media (min-width: ${screenMdMin}) {
+    max-width: ${containerMdMax};
+  }
+  @media (min-width: ${screenLgMin}) {
+    max-width: ${containerLgMax};
+  }
+  padding: 0 20px;
+  margin: auto;
+  width: 100%;
+`
 
 const Wrap = styled.div`
   display: flex;
