@@ -47,6 +47,7 @@ const Title = styled.h1`
   margin: 0 40px 0 0;
   font-family: "Libre Barcode 128 Text", cursive;
   font-size: 2.25em;
+  font-weight: 300;
   a:hover {
     color: black;
   }
