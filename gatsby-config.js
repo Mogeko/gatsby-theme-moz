@@ -3,6 +3,7 @@ module.exports = {
     title: "Mogeko`s Blog",
     description: `Mogeko 的个人博客`,
     author: `@mogeko`,
+    copyrightYear: 2017,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
