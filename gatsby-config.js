@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Mogeko`s Blog',
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: "Mogeko`s Blog",
+    description: `Mogeko 的个人博客`,
+    author: `@mogeko`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-linaria`,
+    `gatsby-plugin-fontawesome-css`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
