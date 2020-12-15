@@ -26,6 +26,7 @@ export const screenSmMin = `768px`
 export const screenMdMin = `992px`
 export const screenLgMin = `1200px`
 
+export const containerXsMax = `680px`
 export const containerSmMax = `750px`
 export const containerMdMax = `970px`
 export const containerLgMax = `1170px`

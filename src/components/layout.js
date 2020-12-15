@@ -16,10 +16,10 @@ import {
   screenSmMin,
   screenMdMin,
   screenLgMin,
-  containerXsMax,
   containerSmMax,
   containerMdMax,
   containerLgMax,
+  containerXsMax,
 } from "../styles/variables"
 
 export { TopProgress } from "./header"
@@ -52,7 +52,10 @@ export default function Layout({ children, className }) {
 }
 
 export const Container = styled.div`
-  max-width: ${containerSmMax};
+  max-width: ${containerXsMax};
+  @media (min-width: ${screenSmMin}) {
+    max-width: ${containerSmMax};
+  }
   @media (min-width: ${screenMdMin}) {
     max-width: ${containerMdMax};
   }
