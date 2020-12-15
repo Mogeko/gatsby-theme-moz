@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
+export { default as TopProgress } from "./top-progress"
+
 export default function Header({ siteTitle, children }) {
   return (
     <HeaderBar>
