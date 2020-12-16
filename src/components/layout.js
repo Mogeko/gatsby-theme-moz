@@ -22,8 +22,6 @@ import {
   containerXsMax,
 } from "../styles/variables"
 
-export { TopProgress } from "./header"
-
 export default function Layout({ children, className }) {
   const data = useStaticQuery(graphql`
     query SiteDataQuery {

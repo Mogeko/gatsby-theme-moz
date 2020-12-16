@@ -1,5 +1,6 @@
 import { styled } from "linaria/react"
 import React, { useEffect, useState } from "react"
+import { topProgressColor } from "../../styles/variables"
 
 export default function TopProgress() {
   const winHeight = window.innerHeight
@@ -7,12 +8,11 @@ export default function TopProgress() {
   const [max, setMax] = useState(docHeight - winHeight)
   const [value, setValue] = useState(window.scrollY)
 
-  const calculate_progress = () => {
-    setMax(docHeight - winHeight)
-    setValue(window.scrollY)
-  }
-
   useEffect(() => {
+    const calculate_progress = () => {
+      setMax(docHeight - winHeight)
+      setValue(window.scrollY)
+    }
     document.addEventListener("scroll", calculate_progress)
 
     return () => {
@@ -22,8 +22,6 @@ export default function TopProgress() {
 
   return <Progress max={max} value={value} />
 }
-
-const progressColor = "#ef3982"
 
 const Progress = styled.progress`
   position: fixed;
@@ -37,14 +35,14 @@ const Progress = styled.progress`
   appearance: none;
   border: none;
   background-color: transparent;
-  color: ${progressColor};
+  color: ${topProgressColor};
   &::-webkit-progress-bar {
     background-color: transparent;
   }
   &::-webkit-progress-value {
-    background-color: ${progressColor};
+    background-color: ${topProgressColor};
   }
   &::-moz-progress-bar {
-    background-color: ${progressColor};
+    background-color: ${topProgressColor};
   }
 `

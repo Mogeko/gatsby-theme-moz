@@ -6,6 +6,8 @@ import { containerXsMax } from "../../styles/variables"
 import { Footer } from "./footer"
 import Header from "./header"
 
+export { default as TopProgress } from "./top-progress"
+
 export default function Article({ children, title }) {
   const style = css`
     max-width: ${containerXsMax};

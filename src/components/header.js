@@ -4,8 +4,6 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Container } from "./layout"
 
-export { default as TopProgress } from "./top-progress"
-
 export default function Header({ siteTitle, children }) {
   return (
     <HeaderBar>

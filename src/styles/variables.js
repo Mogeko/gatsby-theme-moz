@@ -21,6 +21,9 @@ export const lightPaginationLinkActiveColor = `#000`
 // Border
 export const lightBorderColor = `#dcdcdc`
 
+// Top Progress
+export const topProgressColor = `#ef3982`
+
 // Max/Min width
 export const screenSmMin = `768px`
 export const screenMdMin = `992px`
