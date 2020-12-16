@@ -1,21 +1,11 @@
-import { graphql, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { styled } from "linaria/react"
 import PropTypes from "prop-types"
 import React from "react"
 
-export default function Footer({ copyrightYear }) {
+export default function Footer({ copyrightYear, author }) {
   const nowYear = new Date().getFullYear()
-  const data = useStaticQuery(graphql`
-    query SiteAuthorQuery {
-      site {
-        siteMetadata {
-          author
-        }
-      }
-    }
-  `)
 
   return (
     <FooterBar>
@@ -30,7 +20,7 @@ export default function Footer({ copyrightYear }) {
           <FontAwesomeIcon icon={faHeart} size="sm" />
         </span>
         <span>
-          <a href="/about">{data.site.siteMetadata?.author}</a>
+          <a href="/about">{author}</a>
         </span>
         <span>|</span>
         <span>
@@ -56,6 +46,7 @@ const Copyright = styled.div`
 `
 
 Footer.propTypes = {
+  author: PropTypes.string.isRequired,
   copyrightYear: PropTypes.number,
 }
 

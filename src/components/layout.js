@@ -26,10 +26,11 @@ export { TopProgress } from "./header"
 
 export default function Layout({ children, className }) {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteDataQuery {
       site {
         siteMetadata {
           copyrightYear
+          author
           title
         }
       }
@@ -46,7 +47,10 @@ export default function Layout({ children, className }) {
         <a href="/tags">Tags</a>
       </Header>
       <Main>{children}</Main>
-      <Footer copyrightYear={data.site.siteMetadata?.copyrightYear || 2020} />
+      <Footer
+        copyrightYear={data.site.siteMetadata?.copyrightYear || 2020}
+        author={data.site.siteMetadata?.author}
+      />
     </Wrap>
   )
 }
