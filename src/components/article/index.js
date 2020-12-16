@@ -8,27 +8,40 @@ import Header from "./header"
 
 export { default as TopProgress } from "./top-progress"
 
-export default function Article({ children, title }) {
+export default function Article({ children, title, author, date, categories }) {
   const style = css`
     max-width: ${containerXsMax};
     margin: inherit;
   `
   return (
     <article className={style}>
-      <Header postTitle={title} />
+      <Header
+        postTitle={title}
+        author={author}
+        categories={categories}
+        date={date}
+      />
       <Content>{children}</Content>
       <Footer />
     </article>
   )
 }
 
-const Content = styled.div``
+const Content = styled.div`
+  margin-top: 2rem;
+`
 
 Article.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string || null,
+  author: PropTypes.string.isRequired,
+  categories: PropTypes.string || null,
+  date: PropTypes.string || null,
 }
 
 Article.defaultProps = {
   title: ``,
+  author: ``,
+  categories: null,
+  date: null,
 }

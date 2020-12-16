@@ -11,13 +11,18 @@ import SEO from "../components/seo"
 // Common components
 const shortcodes = { Link }
 
-export default function PageTemplate({ data: { mdx } }) {
+export default function PageTemplate({ data: { mdx, site } }) {
   return (
     <Layout>
       <Container>
         <TopProgress />
         <SEO title={mdx.frontmatter.title} />
-        <Article title={mdx.frontmatter.title}>
+        <Article
+          author={site.siteMetadata.author}
+          title={mdx.frontmatter.title}
+          date={mdx.frontmatter.date}
+          categories={mdx.frontmatter.categories}
+        >
           <MDXProvider components={shortcodes}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
@@ -34,6 +39,8 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        categories
+        date(formatString: "MMMM DD, YYYY")
       }
     }
     site {
