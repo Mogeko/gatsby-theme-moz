@@ -8,7 +8,14 @@ import Header from "./header"
 
 export { default as TopProgress } from "./top-progress"
 
-export default function Article({ children, title, author, date, categories }) {
+export default function Article({
+  children,
+  title,
+  author,
+  date,
+  categories,
+  wordCount,
+}) {
   const style = css`
     max-width: ${containerXsMax};
     margin: inherit;
@@ -20,6 +27,7 @@ export default function Article({ children, title, author, date, categories }) {
         author={author}
         categories={categories}
         date={date}
+        wordCount={wordCount}
       />
       <Content>{children}</Content>
       <Footer />
@@ -37,6 +45,7 @@ Article.propTypes = {
   author: PropTypes.string.isRequired,
   categories: PropTypes.string || null,
   date: PropTypes.string || null,
+  wordCount: PropTypes.number.isRequired,
 }
 
 Article.defaultProps = {
@@ -44,4 +53,5 @@ Article.defaultProps = {
   author: ``,
   categories: null,
   date: null,
+  wordCount: 0,
 }

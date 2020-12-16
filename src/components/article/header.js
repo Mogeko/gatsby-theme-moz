@@ -4,9 +4,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { css } from "linaria"
 import { Link } from "gatsby"
+import { lightPostLinkColor } from "../../styles/variables"
 
-export default function Header({ postTitle, author, categories, date }) {
-  console.log(categories)
+export default function Header({ postTitle, author, categories, date, wordCount }) {
   const style = css`
     h1 {
       line-height: 2.2rem;
@@ -21,12 +21,13 @@ export default function Header({ postTitle, author, categories, date }) {
         author={author}
         categories={categories}
         date={date}
+        wordCount={wordCount}
       />
     </header>
   )
 }
 
-const PostMeta = ({ author, categories, date }) => {
+const PostMeta = ({ author, categories, date, wordCount }) => {
   const style = css`
     color: #757575;
     margin: 0 auto;
@@ -45,6 +46,7 @@ const PostMeta = ({ author, categories, date }) => {
         ? <> in <Link to={`/categories/${categories}`}>
         <FontAwesomeIcon icon={faFolder} />{categories}</Link></>
         : ``}
+      , {wordCount} words
     </p>
   )
 }
@@ -54,6 +56,7 @@ Header.propTypes = {
   author: PropTypes.string.isRequired,
   categories: PropTypes.string || null,
   date: PropTypes.string || null,
+  wordCount: PropTypes.number.isRequired,
 }
 
 Header.defaultProps = {
@@ -61,16 +64,19 @@ Header.defaultProps = {
   author: ``,
   categories: null,
   date: null,
+  wordCount: 0,
 }
 
 PostMeta.propTypes = {
   author: PropTypes.string.isRequired,
   categories: PropTypes.string || null,
   date: PropTypes.string || null,
+  wordCount: PropTypes.number.isRequired,
 }
 
 PostMeta.defaultProps = {
   author: ``,
   categories: null,
   date: null,
+  wordCount: 0,
 }

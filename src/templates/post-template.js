@@ -8,6 +8,8 @@ import Layout, { Container } from "../components/layout"
 import Article, { TopProgress } from "../components/article"
 import SEO from "../components/seo"
 
+const wordcount = require("wordcount")
+
 // Common components
 const shortcodes = { Link }
 
@@ -22,6 +24,7 @@ export default function PageTemplate({ data: { mdx, site } }) {
           title={mdx.frontmatter.title}
           date={mdx.frontmatter.date}
           categories={mdx.frontmatter.categories}
+          wordCount={wordcount(mdx.internal.content)}
         >
           <MDXProvider components={shortcodes}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -41,6 +44,9 @@ export const pageQuery = graphql`
         title
         categories
         date(formatString: "MMMM DD, YYYY")
+      }
+      internal {
+        content
       }
     }
     site {
