@@ -7,6 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout, { Container } from "../components/layout"
 import Article, { TopProgress } from "../components/article"
 import SEO from "../components/seo"
+import components from "../components/mdx/components"
 
 const wordcount = require("wordcount")
 
@@ -26,7 +27,7 @@ export default function PageTemplate({ data: { mdx, site } }) {
           categories={mdx.frontmatter.categories}
           wordCount={wordcount(mdx.internal.content)}
         >
-          <MDXProvider components={shortcodes}>
+          <MDXProvider components={Object.assign(components, shortcodes)}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
         </Article>

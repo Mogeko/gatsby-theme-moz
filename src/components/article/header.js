@@ -4,7 +4,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { css } from "linaria"
 import { Link } from "gatsby"
-import { lightPostLinkColor } from "../../styles/variables"
+import {
+  lightPostLinkColor,
+  lightPostLinkHoverColor,
+} from "../../styles/variables"
 
 export default function Header({ postTitle, author, categories, date, wordCount }) {
   const style = css`
@@ -32,6 +35,12 @@ const PostMeta = ({ author, categories, date, wordCount }) => {
     color: #757575;
     margin: 0 auto;
     font-size: 1rem;
+    a {
+      color: ${lightPostLinkColor};
+      &:hover {
+        color: ${lightPostLinkHoverColor};
+      }
+    }
     .fa-folder {
       vertical-align: -0.25em;
       margin: 0 2px 0 0;
