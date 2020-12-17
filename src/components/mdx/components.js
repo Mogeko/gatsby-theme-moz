@@ -1,4 +1,3 @@
-import { css } from "linaria"
 import { styled } from "linaria/react"
 import {
   lightPostLinkColor,
@@ -73,7 +72,12 @@ const Delete = styled.del``
 
 const InlineCode = styled.code``
 
-const Link = styled.a``
+const Link = styled.a`
+  color: ${lightPostLinkColor};
+  &:hover {
+    color: ${lightPostLinkHoverColor};
+  }
+`
 
 const Image = styled.img``
 
