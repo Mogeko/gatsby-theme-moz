@@ -3,7 +3,7 @@ import {
   lightBackgroundColor,
   lightFontColor,
   lightGlobalLinkColor,
-  lightPostLinkHoverColor,
+  lightGlobalLinkHoverColor,
 } from "./variables"
 
 import "normalize.css"
@@ -70,7 +70,7 @@ const CssBaseline = css`
       transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease,
         opacity 0.2s ease;
       &:hover {
-        color: ${lightPostLinkHoverColor};
+        color: ${lightGlobalLinkHoverColor};
         text-decoration: none;
         transition: color 0.2s ease, border-color 0.2s ease,
           background 0.2s ease, opacity 0.2s ease;
