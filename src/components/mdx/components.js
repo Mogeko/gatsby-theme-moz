@@ -1,3 +1,4 @@
+import { css } from "linaria"
 import { styled } from "linaria/react"
 import {
   lightPostLinkColor,
@@ -9,17 +10,44 @@ const Paragraph = styled.p`
   margin: 0.5em 0;
 `
 
-const H1 = styled.h1``
+const H1 = styled.h1`
+  font-size: 2em;
+  margin: 0.67em 0;
+`
 
-const H2 = styled.h2``
+const H2to6Margin = `
+  margin: 0.8em auto 0.3em;
+`
 
-const H3 = styled.h3``
+const H2 = styled.h2`
+  ${H2to6Margin}
+  &::before {
+    content: "#";
+    margin-right: 5px;
+    color: ${lightPostLinkColor};
+  }
+`
 
-const H4 = styled.h4``
+const H3 = styled.h3`
+  ${H2to6Margin}
+  &::before {
+    content: "|";
+    margin-right: 5px;
+    color: ${lightPostLinkColor};
+  }
+`
 
-const H5 = styled.h5``
+const H4 = styled.h4`
+  ${H2to6Margin}
+`
 
-const H6 = styled.h6``
+const H5 = styled.h5`
+  ${H2to6Margin}
+`
+
+const H6 = styled.h6`
+  ${H2to6Margin}
+`
 
 const Blockquote = styled.blockquote``
 
@@ -56,7 +84,7 @@ const components = {
   h3: H3,
   h4: H4,
   h5: H5,
-  H6: H6,
+  h6: H6,
   blockquote: Blockquote,
   ul: List,
   ol: OrderList,
