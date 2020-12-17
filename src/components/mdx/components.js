@@ -4,6 +4,18 @@ import {
   lightPostLinkHoverColor,
 } from "../../styles/variables"
 
+export const Content = styled.div`
+  margin-top: 2rem;
+  ol,
+  ul {
+    padding-left: 1em;
+  }
+  & > ol,
+  & > ul {
+    padding-left: 2em;
+  }
+`
+
 const Paragraph = styled.p`
   font-size: 1em;
   margin: 0.5em 0;
@@ -14,12 +26,8 @@ const H1 = styled.h1`
   margin: 0.67em 0;
 `
 
-const H2to6Margin = `
-  margin: 0.8em auto 0.3em;
-`
-
 const H2 = styled.h2`
-  ${H2to6Margin}
+  margin: 0.8em auto 0.3em;
   &::before {
     content: "#";
     margin-right: 5px;
@@ -28,7 +36,7 @@ const H2 = styled.h2`
 `
 
 const H3 = styled.h3`
-  ${H2to6Margin}
+  margin: 0.8em auto 0.3em;
   &::before {
     content: "|";
     margin-right: 5px;
@@ -37,24 +45,18 @@ const H3 = styled.h3`
 `
 
 const H4 = styled.h4`
-  ${H2to6Margin}
+  margin: 0.8em auto 0.3em;
 `
 
 const H5 = styled.h5`
-  ${H2to6Margin}
+  margin: 0.8em auto 0.3em;
 `
 
 const H6 = styled.h6`
-  ${H2to6Margin}
+  margin: 0.8em auto 0.3em;
 `
 
 const Blockquote = styled.blockquote``
-
-const List = styled.ul``
-
-const OrderList = styled.ol``
-
-const ListItem = styled.li``
 
 const Table = styled.table``
 
@@ -90,9 +92,6 @@ const components = {
   h5: H5,
   h6: H6,
   blockquote: Blockquote,
-  ul: List,
-  ol: OrderList,
-  li: ListItem,
   table: Table,
   tr: TableRow,
   th: TableHeader,

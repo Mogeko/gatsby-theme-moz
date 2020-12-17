@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { styled } from "linaria/react"
 import { css } from "linaria"
 import { containerXsMax } from "../../styles/variables"
+import { Content } from "../mdx/components"
 import { Footer } from "./footer"
 import Header from "./header"
 
@@ -34,10 +34,6 @@ export default function Article({
     </article>
   )
 }
-
-const Content = styled.div`
-  margin-top: 2rem;
-`
 
 Article.propTypes = {
   children: PropTypes.node.isRequired,
