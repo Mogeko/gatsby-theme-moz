@@ -4,7 +4,10 @@ import {
   lightPostLinkHoverColor,
 } from "../../styles/variables"
 
-const Paragraph = styled.p``
+const Paragraph = styled.p`
+  font-size: 1em;
+  margin: 0.5em 0;
+`
 
 const H1 = styled.h1``
 
