@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { defineCustomElements } from "@deckdeckgo/highlight-code/dist/loader"
 
 import Layout, { Container } from "../components/layout"
 import Article, { TopProgress } from "../components/article"
@@ -15,6 +16,7 @@ const wordcount = require("wordcount")
 const shortcodes = { Link }
 
 export default function PageTemplate({ data: { mdx, site } }) {
+  defineCustomElements()
   return (
     <Layout>
       <Container>

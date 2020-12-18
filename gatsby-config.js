@@ -25,7 +25,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [`gatsby-remark-plantuml-lite`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-plantuml-lite`,
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: `carbon`,
+              theme: `monokai`,
+            },
+          },
+        ],
       },
     },
     `gatsby-transformer-sharp`,
