@@ -76,20 +76,6 @@ const CssBaseline = css`
           background 0.2s ease, opacity 0.2s ease;
       }
     }
-
-    blockquote {
-      font: 14px/22px normal helvetica, sans-serif;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      margin-left: 2%;
-      margin-right: 0%;
-      padding-left: 15px;
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      border-left: 3px solid #ccc;
-      background-color: #f1f1f1;
-    }
   }
 `
 

@@ -42,9 +42,14 @@ export const Content = styled.div`
   & > ul {
     padding-left: 2em;
   }
+  blockquote {
+    font: 14px/22px normal helvetica, sans-serif;
+    margin: 10px 0 10px 2%;
+    padding: 10px 10px 10px 15px;
+    border-left: 3px solid #ccc;
+    background-color: #f1f1f1;
+  }
 `
-
-const Blockquote = styled.blockquote``
 
 const Table = props => {
   const style = css`
@@ -101,7 +106,6 @@ const Link = styled.a`
 const Image = styled.img``
 
 const components = {
-  blockquote: Blockquote,
   table: Table,
   em: Emphasis,
   strong: Strong,
