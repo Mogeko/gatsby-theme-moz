@@ -61,19 +61,13 @@ const PostMeta = ({ author, categories, date, wordCount }) => {
 }
 
 Header.propTypes = {
+  ...PostMeta.propTypes,
   postTitle: PropTypes.string,
-  author: PropTypes.string.isRequired,
-  categories: PropTypes.string || null,
-  date: PropTypes.string || null,
-  wordCount: PropTypes.number.isRequired,
 }
 
 Header.defaultProps = {
+  ...PostMeta.defaultProps,
   postTitle: ``,
-  author: ``,
-  categories: null,
-  date: null,
-  wordCount: 0,
 }
 
 PostMeta.propTypes = {
