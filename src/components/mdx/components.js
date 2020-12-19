@@ -49,9 +49,14 @@ export const Content = styled.div`
     padding: 10px 10px 10px 15px;
     border-left: 3px solid #ccc;
     background-color: #f1f1f1;
+    i,
+    em {
+      text-decoration: underline;
+    }
   }
   del {
     text-decoration: line-through red;
+    text-decoration-thickness: 0.125em;
   }
   a {
     color: ${lightPostLinkColor};
