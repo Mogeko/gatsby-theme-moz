@@ -1,9 +1,11 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { styled } from "linaria/react"
 import {
+  screenSmMin,
   lightPostLinkColor,
   lightPostLinkHoverColor,
-  screenSmMin,
+  lightCodeNotclassBackgroundColor,
 } from "../../styles/variables"
 import { css } from "linaria"
 
@@ -49,6 +51,12 @@ export const Content = styled.div`
     border-left: 3px solid #ccc;
     background-color: #f1f1f1;
   }
+  a {
+    color: ${lightPostLinkColor};
+    &:hover {
+      color: ${lightPostLinkHoverColor};
+    }
+  }
 `
 
 const Table = props => {
@@ -90,17 +98,14 @@ const Table = props => {
 
 const Emphasis = styled.em``
 
-const Strong = styled.strong``
 
 const Delete = styled.del``
 
-const InlineCode = styled.code``
-
-const Link = styled.a`
-  color: ${lightPostLinkColor};
-  &:hover {
-    color: ${lightPostLinkHoverColor};
-  }
+const InlineCode = styled.code`
+  padding: 1px 6px;
+  margin: 0 2px;
+  background: ${lightCodeNotclassBackgroundColor};
+  border-radius: 5px;
 `
 
 const Image = styled.img``
@@ -108,10 +113,8 @@ const Image = styled.img``
 const components = {
   table: Table,
   em: Emphasis,
-  strong: Strong,
   delete: Delete,
   inlineCode: InlineCode,
-  a: Link,
   img: Image,
 }
 
