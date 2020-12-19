@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { styled } from "linaria/react"
 import {
   screenSmMin,
@@ -99,11 +98,6 @@ const Table = props => {
   )
 }
 
-const Emphasis = styled.em``
-
-
-const Delete = styled.del``
-
 const InlineCode = styled.code`
   padding: 1px 6px;
   margin: 0 2px;
@@ -111,12 +105,20 @@ const InlineCode = styled.code`
   border-radius: 5px;
 `
 
-const Image = styled.img``
+const Image = props => {
+  const style = css`
+    display: block;
+    min-width: 90%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+  `
+  return <img className={style} decoding="async" loading="lazy" {...props} />
+}
 
 const components = {
   table: Table,
-  em: Emphasis,
-  delete: Delete,
   inlineCode: InlineCode,
   img: Image,
 }
