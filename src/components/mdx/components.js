@@ -59,6 +59,12 @@ export const Content = styled.div`
       color: ${lightPostLinkHoverColor};
     }
   }
+  code,
+  deckgo-highlight-code {
+    --font-family: "Fira Code", Consolas, Monaco, Menlo, Consolas, monospace;
+    --deckgo-highlight-code-font-family: var(--font-family);
+    font-family: var(--font-family);
+  }
 `
 
 const Table = props => {
