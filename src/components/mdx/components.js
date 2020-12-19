@@ -51,6 +51,9 @@ export const Content = styled.div`
     border-left: 3px solid #ccc;
     background-color: #f1f1f1;
   }
+  del {
+    text-decoration: line-through red;
+  }
   a {
     color: ${lightPostLinkColor};
     &:hover {
