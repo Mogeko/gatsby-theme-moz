@@ -44,7 +44,7 @@ export const Content = styled.div`
     padding-left: 2em;
   }
   blockquote {
-    font: 14px/22px normal helvetica, sans-serif;
+    font: italic 14px/22px normal helvetica, serif;
     margin: 10px 0 10px 2%;
     padding: 10px 10px 10px 15px;
     border-left: 3px solid #ccc;
@@ -109,6 +109,7 @@ const InlineCode = styled.code`
   margin: 0 2px;
   background: ${lightCodeNotclassBackgroundColor};
   border-radius: 5px;
+  font-size: 0.9em;
 `
 
 const Image = props => {

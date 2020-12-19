@@ -11,10 +11,8 @@ import "normalize.css"
 const CssBaseline = css`
   :global() {
     /** Font **/
-    /* josefin-sans-regular && Libre Barcode 128 Text */
-    @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Libre+Barcode+128+Text&display=swap");
-    /* FiraCode */
-    @import url("https://cdn.jsdelivr.net/npm/firacode@3.1.0/distr/fira_code.min.css");
+    /* josefin-sans-regular && Fira Code && Libre Barcode 128 Text */
+    @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Fira+Code&family=Libre+Barcode+128+Text&display=swap");
 
     html {
       font-family: "Josefin Sans", -apple-system, BlinkMacSystemFont,
