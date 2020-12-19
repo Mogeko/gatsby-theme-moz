@@ -28,6 +28,7 @@ export default function PageTemplate({ data: { mdx, site } }) {
           date={mdx.frontmatter.date}
           categories={mdx.frontmatter.categories}
           wordCount={wordcount(mdx.internal.content)}
+          tags={mdx.frontmatter.tags}
         >
           <MDXProvider components={Object.assign(components, shortcodes)}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -47,6 +48,7 @@ export const pageQuery = graphql`
         title
         categories
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
       internal {
         content

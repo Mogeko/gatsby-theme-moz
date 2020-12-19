@@ -15,6 +15,7 @@ export default function Article({
   date,
   categories,
   wordCount,
+  tags,
 }) {
   const style = css`
     max-width: ${containerXsMax};
@@ -30,7 +31,7 @@ export default function Article({
         wordCount={wordCount}
       />
       <Content>{children}</Content>
-      <Footer />
+      <Footer  author={author} tags={tags} />
     </article>
   )
 }
@@ -42,6 +43,7 @@ Article.propTypes = {
   categories: PropTypes.string || null,
   date: PropTypes.string || null,
   wordCount: PropTypes.number.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string) || null,
 }
 
 Article.defaultProps = {
@@ -50,4 +52,5 @@ Article.defaultProps = {
   categories: null,
   date: null,
   wordCount: 0,
+  tags: null,
 }

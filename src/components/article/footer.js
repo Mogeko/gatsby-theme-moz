@@ -1,22 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTags } from "@fortawesome/free-solid-svg-icons"
 import { css } from "linaria"
 
-export const Footer = () => {
-  const data = useStaticQuery(graphql`
-    query SiteAuthorQuery {
-      site {
-        siteMetadata {
-          author
-        }
-      }
-    }
-  `)
-
+export const Footer = ({ author, tags }) => {
   return (
     <footer>
-      <Copyright author={data.site.siteMetadata?.author}></Copyright>
+      <Copyright author={author} />
+      <PostTags tags={tags} />
     </footer>
   )
 }
@@ -59,6 +52,64 @@ const Copyright = ({ author }) => {
   )
 }
 
+const PostTags = ({ tags }) => {
+  console.log(Array.isArray(tags) && tags.length > 0)
+  const style = css`
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    section:first-child {
+      span:not(:last-child)::after {
+        content: " / ";
+      }
+    }
+  `
+  return (
+    <div className={style}>
+      <section>
+        {Array.isArray(tags) && tags.length > 0 ? (
+          <>
+            <FontAwesomeIcon icon={faTags} size="xs" />
+            {"Tag(s): "}
+            {tags.map(tag => (
+              <span>
+                <Link to={`/tags/${tag}`}>{`#${tag}`}</Link>
+              </span>
+            ))}
+          </>
+        ) : null}
+      </section>
+      <section>
+        <Link href="javascript: window.history.back();">back</Link>
+        {" · "}
+        <Link to="/">home</Link>
+      </section>
+    </div>
+  )
+}
+
+Footer.propTypes = {
+  ...Copyright.propTypes,
+  ...PostTags.propTypes,
+}
+
+Footer.defaultProps = {
+  ...Copyright.defaultProps,
+  ...PostTags.defaultProps,
+}
+
 Copyright.propTypes = {
   author: PropTypes.string.isRequired,
+}
+
+Copyright.defaultProps = {
+  author: ``,
+}
+
+PostTags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string) || null,
+}
+
+PostTags.defaultProps = {
+  tags: null,
 }
