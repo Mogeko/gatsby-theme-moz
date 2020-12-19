@@ -2,6 +2,7 @@ import React from "react"
 import { styled } from "linaria/react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Link } from "gatsby"
 
 export default function NotFoundPage() {
   const emojis = [
@@ -26,14 +27,7 @@ export default function NotFoundPage() {
         <h1>{emojis[Math.floor(Math.random() * emojis.length)]}</h1>
         <p>/* 404 page not found. */</p>
         <p>
-          <a
-            href="#"
-            onClick={() => {
-              window.history.back()
-            }}
-          >
-            ↑ Go Back ↑
-          </a>
+          <Link href="javascript: window.history.back();">↑ Go Back ↑</Link>
         </p>
       </NotFound>
     </Layout>
