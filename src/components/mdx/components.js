@@ -44,7 +44,7 @@ export const Content = styled.div`
     padding-left: 2em;
   }
   blockquote {
-    font: italic 14px/22px normal helvetica, serif;
+    font: italic 14px/22px normal helvetica, serif, STSong;
     margin: 10px 0 10px 2%;
     padding: 10px 10px 10px 15px;
     border-left: 3px solid #ccc;
