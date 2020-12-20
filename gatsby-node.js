@@ -18,6 +18,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             frontmatter {
               date(formatString: "YYYY")
+              title
             }
             slug
           }
@@ -32,11 +33,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMdx.edges
 
-  posts.forEach(({ node }, _index) => {
+  posts.forEach(({ node }, index) => {
     createPage({
       path: `/${node.frontmatter.date}/${node.slug}`,
       component: path.resolve(`src/templates/post-template.js`),
-      context: { id: node.id },
+      context: {
+        id: node.id,
+        prev: index === 0 ? null : posts[index - 1].node,
+        next: index === posts.length - 1 ? null : posts[index + 1].node,
+      },
     })
   })
 }

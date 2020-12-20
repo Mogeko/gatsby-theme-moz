@@ -16,6 +16,8 @@ export default function Article({
   categories,
   wordCount,
   tags,
+  prevPage,
+  nextPage,
 }) {
   const style = css`
     max-width: ${containerXsMax};
@@ -31,7 +33,7 @@ export default function Article({
         wordCount={wordCount}
       />
       <Content>{children}</Content>
-      <Footer  author={author} tags={tags} />
+      <Footer  author={author} tags={tags} prev={prevPage} next={nextPage} />
     </article>
   )
 }
@@ -44,6 +46,14 @@ Article.propTypes = {
   date: PropTypes.string || null,
   wordCount: PropTypes.number.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string) || null,
+  prevPage: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  }) || null,
+  nextPage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }) || null,
 }
 
 Article.defaultProps = {
@@ -53,4 +63,6 @@ Article.defaultProps = {
   date: null,
   wordCount: 0,
   tags: null,
+  prevPage: null,
+  nextPage: null,
 }

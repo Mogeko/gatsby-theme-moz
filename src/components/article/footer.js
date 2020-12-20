@@ -1,15 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTags } from "@fortawesome/free-solid-svg-icons"
+import {
+  faTags,
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons"
 import { css } from "linaria"
 
-export const Footer = ({ author, tags }) => {
+export const Footer = ({ author, tags, prev, next }) => {
   return (
     <footer>
       <Copyright author={author} />
       <PostTags tags={tags} />
+      <Navigation prev={prev} next={next} />
     </footer>
   )
 }
@@ -53,7 +58,6 @@ const Copyright = ({ author }) => {
 }
 
 const PostTags = ({ tags }) => {
-  console.log(Array.isArray(tags) && tags.length > 0)
   const style = css`
     margin: 1rem 0;
     display: flex;
@@ -88,14 +92,59 @@ const PostTags = ({ tags }) => {
   )
 }
 
+const Navigation = ({ prev, next }) => {
+  const style = css`
+    width: 100%;
+    a {
+      font-weight: 600;
+      font-size: 1rem;
+      transition-property: transform;
+      transition-timing-function: ease-out;
+      transition-duration: 0.3s;
+      &:first-child {
+        float: left;
+        &:hover {
+          transform: translateX(-4px);
+        }
+      }
+      &:last-child {
+        float: right;
+        &:hover {
+          transform: translateX(4px);
+        }
+      }
+    }
+  `
+  return (
+    <div className={style}>
+      {prev ? (
+        <Link to={prev.slug}>
+          <FontAwesomeIcon icon={faChevronLeft} /> {prev.title}
+        </Link>
+      ) : (
+        <span />
+      )}
+      {next ? (
+        <Link to={next.slug}>
+          {next.title} <FontAwesomeIcon icon={faChevronRight} />
+        </Link>
+      ) : (
+        <span />
+      )}
+    </div>
+  )
+}
+
 Footer.propTypes = {
   ...Copyright.propTypes,
   ...PostTags.propTypes,
+  ...Navigation.propTypes,
 }
 
 Footer.defaultProps = {
   ...Copyright.defaultProps,
   ...PostTags.defaultProps,
+  ...Navigation.defaultProps,
 }
 
 Copyright.propTypes = {
@@ -112,4 +161,22 @@ PostTags.propTypes = {
 
 PostTags.defaultProps = {
   tags: null,
+}
+
+Navigation.propTypes = {
+  prev:
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }) || null,
+  next:
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }) || null,
+}
+
+Navigation.defaultProps = {
+  prev: null,
+  next: null,
 }

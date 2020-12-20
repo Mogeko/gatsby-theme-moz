@@ -15,7 +15,20 @@ const wordcount = require("wordcount")
 // Common components
 const shortcodes = { Link }
 
-export default function PageTemplate({ data: { mdx, site } }) {
+export default function PageTemplate({ data: { mdx, site }, pageContext }) {
+  const { prev, next } = pageContext
+  const prevPage = prev
+    ? {
+        title: prev.frontmatter.title,
+        slug: `/${prev.frontmatter.date}/${prev.slug}`,
+      }
+    : null
+  const nextPage = next
+    ? {
+        title: next.frontmatter.title,
+        slug: `/${next.frontmatter.date}/${next.slug}`,
+      }
+    : null
   defineCustomElements()
   return (
     <Layout>
@@ -29,6 +42,8 @@ export default function PageTemplate({ data: { mdx, site } }) {
           categories={mdx.frontmatter.categories}
           wordCount={wordcount(mdx.internal.content)}
           tags={mdx.frontmatter.tags}
+          prevPage={prevPage}
+          nextPage={nextPage}
         >
           <MDXProvider components={Object.assign(components, shortcodes)}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -66,5 +81,9 @@ PageTemplate.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.any.isRequired,
     site: PropTypes.any.isRequired,
+  }),
+  pageContext: PropTypes.shape({
+    prev: PropTypes.any.isRequired,
+    next: PropTypes.any.isRequired,
   }),
 }
