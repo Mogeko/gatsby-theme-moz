@@ -30,7 +30,7 @@ export default function Header({ postTitle, author, categories, date, wordCount 
   )
 }
 
-const PostMeta = ({ author, categories, date, wordCount }) => {
+export const PostMeta = ({ author, categories, date, wordCount }) => {
   const style = css`
     color: #757575;
     margin: 0 auto;
@@ -48,14 +48,27 @@ const PostMeta = ({ author, categories, date, wordCount }) => {
   `
   return (
     <p className={style}>
-      Written by {<Link to="/about">{author}</Link>} with{" "}
-      <FontAwesomeIcon icon={faHeart} color="red" size="sm" />
-      {date ? ` on ${date}` : ``}
-      {categories
-        ? <> in <Link to={`/categories/${categories}`}>
-        <FontAwesomeIcon icon={faFolder} />{categories}</Link></>
-        : ``}
-      , {wordCount} words
+      Written
+      {author ? (
+        <>
+          {" "}
+          by <Link to="/about">{author}</Link>{" "}
+          with <FontAwesomeIcon icon={faHeart} color="red" size="sm" />
+        </>
+      ) : null}
+      {date ? <> on <strong>{date}</strong></> : null}
+      {categories ? (
+        <>
+          {" "}
+          in{" "}
+          <Link to={`/categories/${categories}`}>
+            <FontAwesomeIcon icon={faFolder} />
+            {categories}
+          </Link>
+        </>
+      ) : null}
+      { wordCount ? (<>, {wordCount} words</>) : null}
+      {"."}
     </p>
   )
 }
