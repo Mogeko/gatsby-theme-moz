@@ -13,13 +13,9 @@ import CssBaseline from "../styles/base"
 import Header, { HeaderGap } from "./header"
 import Footer from "./footer"
 import {
-  screenSmMin,
-  screenMdMin,
-  screenLgMin,
-  containerSmMax,
   containerMdMax,
-  containerLgMax,
-  containerXsMax,
+  lightWrapperBackgroundColor,
+  lightBackgroundColor,
 } from "../styles/variables"
 
 export default function Layout({ children, className }) {
@@ -36,47 +32,33 @@ export default function Layout({ children, className }) {
   `)
 
   return (
-    <Wrap className={className}>
-      <CssBaseline />
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`}>
-        <a href="/about">About</a>
-        <HeaderGap />
-        <a href="/categories">Categories</a>
-        <a href="/tags">Tags</a>
-      </Header>
-      <Main>{children}</Main>
-      <Footer
-        copyrightYear={data.site.siteMetadata?.copyrightYear || 2020}
-        author={data.site.siteMetadata?.author}
-      />
-    </Wrap>
+    <Container>
+      <Wrap className={className}>
+        <CssBaseline />
+      </Wrap>
+    </Container> 
   )
 }
 
 export const Container = styled.div`
-  max-width: ${containerXsMax};
-  @media (min-width: ${screenSmMin}) {
-    max-width: ${containerSmMax};
-  }
-  @media (min-width: ${screenMdMin}) {
-    max-width: ${containerMdMax};
-  }
-  @media (min-width: ${screenLgMin}) {
-    max-width: ${containerLgMax};
-  }
-  padding: 0 20px;
-  margin: auto;
-  width: 100%;
+  background-color: ${lightBackgroundColor};
+  position: relative;
+  display: flex;
 `
 
 const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  background-color: ${lightWrapperBackgroundColor};
+  width: 100%;
   min-height: 100vh;
-`
-
-const Main = styled.main`
-  flex: 1 0 auto;
+  grid-template-columns: minmax(350px,5fr) minmax(250px,2fr);
+  grid-template-rows: 54px auto 1fr auto;
+  grid-column-gap: 32px;
+  grid-row-gap: 0;
+  max-width: ${containerMdMax};
 `
 
 Layout.propTypes = {

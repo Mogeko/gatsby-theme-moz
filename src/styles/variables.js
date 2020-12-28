@@ -1,6 +1,7 @@
 // light theme
 // Background
-export const lightBackgroundColor = `#fff`
+export const lightBackgroundColor = `#e0e0e0`
+export const lightWrapperBackgroundColor = `#fafafa`
 // Font
 export const lightFontColor = `#161209`
 export const lightFontSecondaryColor = `#a9a9b3`
@@ -8,7 +9,7 @@ export const lightFontSecondaryColor = `#a9a9b3`
 export const lightCodeNotclassBackgroundColor = `#eaeaea`
 // Navbar
 export const lightNavbarActiveColor = `#161209`
-export const lightNavbarBackgroundColor = `#fafafa`
+export const lightNavbarBackgroundColor = `#eee`
 // Link (Global)
 export const lightGlobalLinkColor = `#161209`
 export const lightGlobalLinkHoverColor = `#2d96bd`
@@ -31,5 +32,5 @@ export const screenLgMin = `1200px`
 
 export const containerXsMax = `680px`
 export const containerSmMax = `750px`
-export const containerMdMax = `970px`
+export const containerMdMax = `960px`
 export const containerLgMax = `1170px`
