@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { styled } from "linaria/react"
 import CssBaseline from "../styles/base"
 import Header, { HeaderGap } from "./header"
@@ -17,6 +17,7 @@ import {
   lightWrapperBackgroundColor,
   lightBackgroundColor,
 } from "../styles/variables"
+import Nav, { NavMenuLeft, NavMenuRight } from "./nav"
 
 export default function Layout({ children, className }) {
   const data = useStaticQuery(graphql`
@@ -35,8 +36,17 @@ export default function Layout({ children, className }) {
     <Container>
       <Wrap className={className}>
         <CssBaseline />
+        <Nav siteTitle={data.site.siteMetadata.title}>
+          <NavMenuLeft>
+            <Link to="/about">About</Link>
+          </NavMenuLeft>
+          <NavMenuRight>
+            <Link to="/categories">Categories</Link>
+            <Link to="/tags">Tags</Link>
+          </NavMenuRight>
+        </Nav>
       </Wrap>
-    </Container> 
+    </Container>
   )
 }
 

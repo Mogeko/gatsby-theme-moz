@@ -8,7 +8,8 @@ export const lightFontSecondaryColor = `#a9a9b3`
 // Code
 export const lightCodeNotclassBackgroundColor = `#eaeaea`
 // Navbar
-export const lightNavbarActiveColor = `#161209`
+export const lightNavbarColor = `#555`
+export const lightNavbarActiveColor = `#26a69a`
 export const lightNavbarBackgroundColor = `#eee`
 // Link (Global)
 export const lightGlobalLinkColor = `#161209`
