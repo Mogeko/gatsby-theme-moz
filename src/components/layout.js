@@ -36,7 +36,7 @@ export default function Layout({ children, className }) {
     <Container>
       <Wrap className={className}>
         <CssBaseline />
-        <Nav siteTitle={data.site.siteMetadata.title}>
+        <Nav siteTitle={data.site.siteMetadata?.title}>
           <NavMenuLeft>
             <Link to="/about">About</Link>
           </NavMenuLeft>
@@ -45,6 +45,7 @@ export default function Layout({ children, className }) {
             <Link to="/tags">Tags</Link>
           </NavMenuRight>
         </Nav>
+        <Footer copyrightYear={data.site.siteMetadata?.copyrightYear} />
       </Wrap>
     </Container>
   )
