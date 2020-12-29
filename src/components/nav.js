@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import {
-  lightNavbarActiveColor,
+  lightNavbarLinkHoverColor,
   lightNavbarBackgroundColor,
-  lightNavbarColor,
+  lightNavbarLinkColor,
 } from "../styles/variables"
 
 export default function Nav({ siteTitle, children }) {
@@ -24,7 +24,7 @@ export default function Nav({ siteTitle, children }) {
     justify-content: space-between;
     background-color: ${lightNavbarBackgroundColor};
     a {
-      color: ${lightNavbarColor};
+      color: ${lightNavbarLinkColor};
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,8 +43,8 @@ export default function Nav({ siteTitle, children }) {
     font-weight: 300;
     align-items: inherit;
     a:hover {
-      fill: ${lightNavbarColor};
-      color: ${lightNavbarColor};
+      fill: ${lightNavbarLinkColor};
+      color: ${lightNavbarLinkColor};
     }
   `
   const NavMenu = styled.div`
@@ -62,8 +62,8 @@ export default function Nav({ siteTitle, children }) {
       font-weight: 700;
       user-select: none;
       &:hover {
-        fill: ${lightNavbarActiveColor};
-        color: ${lightNavbarActiveColor};
+        fill: ${lightNavbarLinkHoverColor};
+        color: ${lightNavbarLinkHoverColor};
       }
     }
   `

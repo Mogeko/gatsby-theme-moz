@@ -8,9 +8,13 @@ export const lightFontSecondaryColor = `#a9a9b3`
 // Code
 export const lightCodeNotclassBackgroundColor = `#eaeaea`
 // Navbar
-export const lightNavbarColor = `#555`
-export const lightNavbarActiveColor = `#26a69a`
+export const lightNavbarLinkColor = `#555`
+export const lightNavbarLinkHoverColor = `#ef3982`
 export const lightNavbarBackgroundColor = `#eee`
+// FooterBar
+export const lightFooterLinkColor = `#2d96bd`
+export const lightFooterBarLinkHoverColor = `#ef3982`
+export const lightFooterBarBackgroundColor = `#eee`
 // Link (Global)
 export const lightGlobalLinkColor = `#161209`
 export const lightGlobalLinkHoverColor = `#2d96bd`
@@ -22,7 +26,6 @@ export const lightPaginationLinkColor = `#2d96bd`
 export const lightPaginationLinkActiveColor = `#000`
 // Border
 export const lightBorderColor = `#dcdcdc`
-
 // Top Progress
 export const topProgressColor = `#ef3982`
 
