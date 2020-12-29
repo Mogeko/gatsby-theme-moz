@@ -1,4 +1,6 @@
-import React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLink } from "@fortawesome/free-solid-svg-icons"
+import React, { useState } from "react"
 import { styled } from "linaria/react"
 import {
   screenSmMin,
@@ -6,7 +8,8 @@ import {
   lightPostLinkHoverColor,
   lightCodeNotclassBackgroundColor,
 } from "../../styles/variables"
-import { css } from "linaria"
+import { css, cx } from "linaria"
+import { Link } from "gatsby"
 
 export const Content = styled.div`
   margin-top: 2rem;
@@ -24,16 +27,6 @@ export const Content = styled.div`
   h5,
   h6 {
     margin: 0.8em auto 0.3em;
-  }
-  h2::before {
-    content: "#";
-    margin-right: 5px;
-    color: ${lightPostLinkColor};
-  }
-  h3::before {
-    content: "|";
-    margin-right: 5px;
-    color: ${lightPostLinkColor};
   }
   ol,
   ul {
@@ -71,6 +64,71 @@ export const Content = styled.div`
     font-family: var(--font-family);
   }
 `
+
+const useAnchor = (WrappedComponent, { children }) => {
+  const [active, setActive] = useState("hide")
+  const handleMouseOver = () => setActive(null)
+  const handleMouseOut = () => setActive("hide")
+  const anchorLink = children
+    .replace(/(\s+)|([.,!?:;'\"\'-])/g, "-")
+    .toLowerCase()
+  const Beacon = css`
+    position: relative;
+    .hide {
+      display: none;
+    }
+  `
+  const Anchor = css`
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    right: -2rem;
+    color: #161209;
+  `
+  return (
+    <WrappedComponent
+      id={anchorLink}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
+      {children}
+      <span className={Beacon}>
+        <Link className={cx(Anchor, active)} to={`#${anchorLink}`}>
+          <FontAwesomeIcon icon={faLink} size="xs" flip="horizontal" />
+        </Link>
+      </span>
+    </WrappedComponent>
+  )
+}
+
+const H1Anchor = props => useAnchor(`h1`, props)
+
+const H2Anchor = props =>
+  useAnchor(
+    styled.h2`
+      &::before {
+        content: "#";
+        margin-right: 5px;
+        color: ${lightPostLinkColor};
+      }
+    `,
+    props
+  )
+
+const H3Anchor = props =>
+  useAnchor(
+    styled.h3`
+      &::before {
+        content: "|";
+        margin-right: 5px;
+        color: ${lightPostLinkColor};
+      }
+    `,
+    props
+  )
+
+const H4Anchor = props => useAnchor(`h4`, props)
 
 const Table = props => {
   const style = css`
@@ -130,6 +188,10 @@ const Image = props => {
 }
 
 const components = {
+  h1: H1Anchor,
+  h2: H2Anchor,
+  h3: H3Anchor,
+  h4: H4Anchor,
   table: Table,
   inlineCode: InlineCode,
   img: Image,
