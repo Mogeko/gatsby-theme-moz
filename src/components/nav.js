@@ -23,6 +23,7 @@ export default function Nav({ siteTitle, children }) {
     align-items: center;
     justify-content: space-between;
     background-color: ${lightNavbarBackgroundColor};
+    border-bottom: 1px solid #e0e0e0;
     a {
       color: ${lightNavbarLinkColor};
       display: flex;
