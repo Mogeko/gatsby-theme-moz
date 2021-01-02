@@ -11,6 +11,9 @@ export const lightCodeNotclassBackgroundColor = `#eaeaea`
 export const lightNavbarLinkColor = `#555`
 export const lightNavbarLinkHoverColor = `#ef3982`
 export const lightNavbarBackgroundColor = `#eee`
+// Breadcrumb
+export const lightBreadcrumbColor = `#aaa`
+export const lightBreadcrumbBackgroundColor = `#eee`
 // FooterBar
 export const lightFooterLinkColor = `#2d96bd`
 export const lightFooterBarLinkHoverColor = `#ef3982`
