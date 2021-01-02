@@ -30,14 +30,15 @@ export const Content = styled.div`
     }
   }
   blockquote {
-    font: italic 14px/22px normal helvetica, serif, STSong;
-    margin: 10px 0 10px 2%;
-    padding: 10px 10px 10px 15px;
-    border-left: 3px solid #ccc;
-    background-color: #f1f1f1;
-    i,
-    em {
-      text-decoration: underline;
+    border-left: 0.32813rem solid #bdbdbd;
+    margin: 0 1.75rem 1.75rem 1.5rem;
+    padding: 0 0 0 1.42188rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: inherit;
+    opacity: 0.8;
+    p {
+      margin-bottom: 0.5rem;
     }
   }
   del {
@@ -65,7 +66,8 @@ const useAnchor = (WrappedComponent, { children }) => {
   const anchorLink = children
     .replace(/(\s+)|([.,!?:;'\"\'-])/g, "-")
     .toLowerCase()
-  const Component = css`
+  const Heading = css`
+    line-height: 1.25;
     .anchor {
       position: relative;
       .hide {
@@ -84,7 +86,7 @@ const useAnchor = (WrappedComponent, { children }) => {
   return (
     <WrappedComponent
       id={anchorLink}
-      className={Component}
+      className={Heading}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
@@ -102,7 +104,6 @@ const H1Anchor = props =>
   useAnchor(
     styled.h1`
       font-size: 2.5rem;
-      line-height: 1.25;
       margin: 3.5rem 0 1.75rem;
     `,
     props
@@ -111,9 +112,8 @@ const H1Anchor = props =>
 const H2Anchor = props =>
   useAnchor(
     styled.h2`
-      font-size: 1.8rem;
-      line-height: 1.25;
-      margin: 2.8rem 0 1.25rem;
+      font-size: 2.2rem;
+      margin: 3.2rem 0 1.5rem;
       &::before {
         content: "#";
         margin-right: 5px;
@@ -126,9 +126,8 @@ const H2Anchor = props =>
 const H3Anchor = props =>
   useAnchor(
     styled.h3`
-      font-size: 2.2rem;
-      line-height: 1.25;
-      margin: 3.2rem 0 1.5rem;
+      font-size: 1.8rem;
+      margin: 2.8rem 0 1.25rem;
 
       &::before {
         content: "|";
@@ -143,7 +142,6 @@ const H4Anchor = props =>
   useAnchor(
     styled.h4`
       font-size: 1.5rem;
-      line-height: 1.25;
       margin: 2.4rem 0 1rem;
     `,
     props
@@ -151,13 +149,11 @@ const H4Anchor = props =>
 
 const H5 = styled.h5`
   font-size: 1.2rem;
-  line-height: 1.25;
   margin: 2rem 0 0.8rem;
 `
 
 const H6 = styled.h6`
   font-size: 1rem;
-  line-height: 1.25;
   margin: 1.5rem 0 0.5rem;
 `
 
