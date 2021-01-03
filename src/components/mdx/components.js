@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLink } from "@fortawesome/free-solid-svg-icons"
-import React, { useState } from "react"
+import React from "react"
 import { styled } from "linaria/react"
 import {
   screenSmMin,
@@ -9,8 +7,7 @@ import {
   lightCodeNotclassBackgroundColor,
   lightGlobalLinkColor,
 } from "../../styles/variables"
-import { css, cx } from "linaria"
-import { Link } from "gatsby"
+import { css } from "linaria"
 
 export const Content = styled.div`
   margin-top: 2rem;
@@ -59,93 +56,55 @@ export const Content = styled.div`
   }
 `
 
-const useAnchor = (WrappedComponent, { children }) => {
-  const [active, setActive] = useState("hide")
-  const handleMouseOver = () => setActive(null)
-  const handleMouseOut = () => setActive("hide")
-  const anchorLink = children
-    .replace(/(\s+)|([.,!?:;'\"\'-])/g, "-")
-    .toLowerCase()
-  const Heading = css`
-    line-height: 1.25;
-    .anchor {
-      position: relative;
-      .hide {
-        display: none;
-      }
-      .anchor-link {
-        position: absolute;
-        top: 50%;
-        left: 0.75rem;
-        right: -2rem;
-        color: ${lightGlobalLinkColor};
-        transform: translateY(-50%);
-      }
-    }
-  `
-  return (
-    <WrappedComponent
-      id={anchorLink}
-      className={Heading}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-    >
-      {children}
-      <span className="anchor">
-        <Link className={cx("anchor-link", active)} to={`#${anchorLink}`}>
-          <FontAwesomeIcon icon={faLink} size="xs" flip="horizontal" />
-        </Link>
-      </span>
-    </WrappedComponent>
-  )
+const withAnchor = {
+  '.anchor': {
+    marginLeft: '0.5rem',
+    '.anchor-link': {
+      color: lightGlobalLinkColor,
+      MozTransform: 'scaleX(-1)',
+      WebkitTransform: 'scaleX(-1)',
+      transform: 'scaleX(-1)',
+      verticalAlign: 'middle',
+      visibility:' hidden',
+    },
+  },
+  '&:hover .anchor .anchor-link': {
+    visibility: 'visible',
+  }
 }
+const H1Anchor = styled.h1`
+  font-size: 2.5rem;
+  margin: 3.5rem 0 1.75rem;
+  ${withAnchor};
+`
 
-const H1Anchor = props =>
-  useAnchor(
-    styled.h1`
-      font-size: 2.5rem;
-      margin: 3.5rem 0 1.75rem;
-    `,
-    props
-  )
+const H2Anchor = styled.h2`
+  font-size: 2.2rem;
+  margin: 3.2rem 0 1.5rem;
+  &::before {
+    content: "#";
+    margin-right: 5px;
+    color: ${lightPostLinkColor};
+  }
+  ${withAnchor};
+`
 
-const H2Anchor = props =>
-  useAnchor(
-    styled.h2`
-      font-size: 2.2rem;
-      margin: 3.2rem 0 1.5rem;
-      &::before {
-        content: "#";
-        margin-right: 5px;
-        color: ${lightPostLinkColor};
-      }
-    `,
-    props
-  )
+const H3Anchor = styled.h3`
+  font-size: 1.8rem;
+  margin: 2.8rem 0 1.25rem;
+  &::before {
+    content: "|";
+    margin-right: 5px;
+    color: ${lightPostLinkColor};
+  }
+  ${withAnchor};
+`
 
-const H3Anchor = props =>
-  useAnchor(
-    styled.h3`
-      font-size: 1.8rem;
-      margin: 2.8rem 0 1.25rem;
-
-      &::before {
-        content: "|";
-        margin-right: 5px;
-        color: ${lightPostLinkColor};
-      }
-    `,
-    props
-  )
-
-const H4Anchor = props =>
-  useAnchor(
-    styled.h4`
-      font-size: 1.5rem;
-      margin: 2.4rem 0 1rem;
-    `,
-    props
-  )
+const H4Anchor = styled.h4`
+  font-size: 1.5rem;
+  margin: 2.4rem 0 1rem;
+  ${withAnchor};
+`
 
 const H5 = styled.h5`
   font-size: 1.2rem;
